@@ -1,7 +1,9 @@
 # othello
 
 Explanations of how the code functions and what each module does c. The reasoning behind the choices made – i.e. why each module works the way it does,
+
 Components
+
 Initialise board sets up a board by using a 3D array which accurately portrays the shape and is easy to understand logically. It does this by looping through 8 times creating elements that are filled with None. It then changes the central 4 positions to the required starting white and black pieces to fulfill othellos structure. It returns the array called board.
 Print board takes the parameter board and prints this 3D array by looping through all of the 8 rows with each loop also looping through each element in every row. It uses if statements to replace None values with N and White or Black values with the first letter of the word. Every printed element is also followed by 5 trailing spaces to ensure a cleaner printed layout.
 Legal move takes three parameters: colour, coord and board. The coordinates are turned into separate values xcoord and ycoord so they can be accessed individually. An opponent variable is declared by checking what colour was passed into the function and choosing the other colour. It then checks if the space the coordinates point to is a None value using an if statement. Next, two variables are created: places_to_flip is an empty array and directions is an array that holds coordinates of all 8 possible directions to check if opponents pieces are present when a player makes a move. 
@@ -9,8 +11,10 @@ The function then loops through all of the coordinates in the directions array. 
 If no direction is made, places to flip is empty and an if statement returns False and an empty array. In all other cases, True is returned along with the places to flip list.
 
 Game engine
+
 Cli coords input is a function to take an input from a player and check if its valid or not valid. It loops until a return is given and makes use of the try/except command. It ‘trys’ to take the input from the current player and stores it in input position. It then stores x and y variables by accessing the second and fourth characters from the input. It checks if x and y are both between 0 and 8 and either prints if the move position is valid or not valid and outputs a message that says this and which coordinate is not accepted. If its accepted, it stores the inputted x and y to a variable called coord tuple otherwise it continues the loop. If the ‘try’ fails, it just prints “Invalid input”.
 Simple game loop is the largest and most complex function in the program. It contains sub functions that are only accessed inside of simple game loop. I will start by explaining those.
+
 Simple game loop sub functions:
 Available move check takes colour and board as parameters. It creates an empty list called legal coords and sets the value of length to 8. It then loops through all the rows using the length value and inside this loop it loops through every element for that row. It checks if every spot is equal to None and if it is, stores it to the legal coords list as a coord if the move is also returned as True when passed to legal move function. It then returns legal coords list when the loop is finished.
 Make move is a function with parameters colour, coord and board. It first sets a value of legal to either True or False by taking legal moves returned value inputting colour, coord and board as the parameters. Then a variable called pieces to swap is made that takes legal moves other output of the list of coords of  places to flip. An if statement checks if legal is True and if it isn’t, returns False value as the move cannot be made. It changes the passed coordinates value on the board to the passed colour. Then iterates through pieces to swap list changing all of those coordinates to the same colour in order to complete the valid move. It then returns True. 
